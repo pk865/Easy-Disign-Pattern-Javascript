@@ -1,0 +1,81 @@
+<script type="text/javascript">
+    function Memento(state){
+        this.state = state;
+
+        this.getState = function (){
+            return this.state;
+        } 
+        this.setState = function (state){
+            this.state = state;
+        }
+    }
+    function TextEdit(){
+        this.mementos = [];
+        this.index = 0;
+
+        this.push = function(memento){
+            this.mementos.push(memento);
+            this.index += 1;
+        } 
+        this.forward = function (){
+            memento = this.mementos[this.index];
+            this.index += 1;
+            return memento;
+        }
+        this.back = function (){
+            this.index -= 1;
+            memento = this.mementos[this.index];
+            return memento;
+        }
+    }
+    function Originator(){
+        this.state = ""
+
+        this.getState = function (){
+            return this.state;
+        }
+        this.setState = function (state){
+            this.state = state;
+        }
+            this.createMemento = function (){
+                return new Memento(this.state);
+            }
+            this.setMemento = function (memento){
+                this.state = memento.getState();
+            }
+            this.show = function (){
+                document.write(this.state);
+            }
+        }
+//////////////////////test////////////////////////
+
+        var textEdit = new TextEdit();
+        //Enter text in textEdit, save while saving
+        var originator = new Originator();
+        originator.setState("Move you in the direction of your dream. <br>");
+        textEdit.push(originator.createMemento());
+
+        originator.setState("Ways to start your day positively. <br>");
+        textEdit.push(originator.createMemento());
+
+        originator.setState("Love can change the world. <br>");
+
+        originator.show();
+
+        //Undo redo Recovery history
+
+        originator.setMemento(textEdit.back());
+        originator.show();
+
+        originator.setMemento(textEdit.back());
+        originator.show();
+
+        document.write("<br>---------------------------<br>")
+
+        originator.setMemento(textEdit.forward());
+        originator.show();
+
+        originator.setMemento(textEdit.forward());
+        originator.show();
+    
+</script>

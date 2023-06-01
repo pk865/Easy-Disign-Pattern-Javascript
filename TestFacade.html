@@ -1,0 +1,53 @@
+<script type="text/javascript">
+    function Light(){
+        this.flash = function (){
+            document.write("Flashing color laght<br>");
+        }
+    }
+
+    function Music(){
+        this.play = function (){
+            document.write("Playing classical music<br>");
+        }
+    }
+
+    function Videos(){
+        this.show = function (){
+            document.write("Mountain stream video display<br>");
+        }
+    }
+
+    function Facade(){
+        this.light = new Light();
+        this.music = new Music();
+        this.video = new Videos();
+
+        this.sing = function (){
+            document.write("Start singing with<br>");
+            this.light.flash();
+            this.music.play();
+        }
+        this.dance = function (){
+            document.write("Start dancing with<br>");
+            this.light.flash();
+            this.music.play();
+            this.video.show();
+        }
+
+        this.act = function (){
+            document.write("Start acting with<br>");
+            this.light.flash();
+            this.video.show();
+        }
+    }
+
+    /////////////////////test//////////////
+
+    var facade = new Facade();
+    facade.sing();
+    document.write("<br>------------------<br>");
+    facade.dance();
+    document.write("<br>------------------<br>");
+    facade.act();
+
+    </script>

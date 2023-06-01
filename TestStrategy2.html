@@ -1,0 +1,31 @@
+<script type="text/javascript">
+    var strategy = {
+        "Addition" : function ( a, b){
+            return a + b;
+        },
+        "Subtraction" : function ( a, b){
+            return a - b;
+        },
+        "Multiplication" : function ( a, b){
+            return a * b;
+        },
+        "Division" : function ( a, b){
+            return a / b;
+        }
+    };
+
+    var context = function ( key, a, b){
+        return strategy[key](a,b);
+    };
+
+    var result = context("Addirion", 4, 2);
+    document.write(result + "<br>" );
+
+    var result = context("Subtraction", 4, 2);
+    document.write(result + "<br>" );
+
+    var result = context("Multiplication", 4, 2);
+    document.write(result + "<br>");
+
+    var result = context("Division", 4, 2);
+    document.write(result + "<br>");

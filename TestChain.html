@@ -1,0 +1,68 @@
+<script>
+    function Handler(){
+        this.handlerRequest = function (request){}
+    }
+    function FrontHandler(nextHandler){
+        Handler.call(this);
+
+        this.nextHandler = nextHandler;
+
+        this.handlerRequest = function (request){
+            if("ResignationApply" == request){
+                document.write("Resignation Apply ->")
+                if(this.nextHandler != null){
+                    this.nextHandler.handlerRequest("FinancialReview");
+                }
+            }
+        }
+    }
+
+    function FinanceHandler(nextHandler){
+        Handler.call(this);
+        this.nextHandler = nextHandler;
+
+        this.handlerRequest = function (request){
+            if ("FinancialReview" == request){
+                document.write("Financial Review Completed ->")
+                if (this.nextHandler != null){
+                    this.nextHandler.handlerRequest("ManagerReview");
+                }
+            }
+        }
+    }
+    function ManagerHandler(nextHandler){
+        Handler.call(this);
+
+        this.nextHandler = nextHandler;
+
+        this.handlerRequest = function (request){
+            if ("ManagerReview" == request){
+                document.write("Manager Review Completed ->")
+                if (this.nextHandler != null){
+                    this.nextHandler.handlerRequest("Approval");
+                }
+            }
+        }
+    }
+    function HrHandler(nextHandler){
+        Handler.call(this);
+
+        this.nextHandler = nextHandler;
+
+        this.handlerRequest = function (request){
+            if ("Approval" == request){
+                document.write("HR Approval ->")
+                if (this.nextHandler != null){
+                    this.nextHandler.handlerRequest("Approval Completed");
+                }
+            }
+        }
+    } 
+    var HrHandler = new HrHandler(null);
+    var managerHandler = new ManagerHandler(HrHandler);
+    var financeHandler = new FinanceHandler(managerHandler);
+    var frontHandler = new FrontHandler(financeHandler);
+    frontHandler.handlerRequest("ResignationApply");
+</script>
+</body>
+</html>

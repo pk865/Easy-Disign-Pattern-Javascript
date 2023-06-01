@@ -1,0 +1,30 @@
+<style>
+   #menu{
+    border: 1px solid #dddddd;
+    background-color: #eeeeee;
+    width: 400px;
+    font-size: 16px;
+   } 
+   </style>
+
+    <div id="menu">
+        <ul>
+            <li> Easy Learning Java </li>
+            <li> Easy Learning Javascript</li>
+            <li> Easy Learning HTML CSS</li>
+            <li> Easy Learning Python 3</li>
+            <li> Easy Learning Design Patterns</li>
+        </ul>
+        <center>
+            <input type="button" id="closeButton" value="Close"/>
+        </center>
+    </div>
+    <script type="text/Javascript">
+
+        document.getElementById("closeButton").addEventListener("click", closeCommand);
+
+        function closeCommand(event){
+            document.getElementById("menu").style.display = "none";
+        }
+
+    </script>

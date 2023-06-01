@@ -1,0 +1,58 @@
+<script type ="text/javascript" >
+    function Car(){
+    this.head = "" ;
+    this.body = "" ;
+    this.wheel = "" ;
+    this.getHead = function (){
+    return this.head;
+    }
+    this.setHead = function ( head){
+    this.head = head;
+    }
+    this.getBody = function (){
+    return this.body;
+    }
+    this.setBody = function ( body){
+    this.body = body;
+    }
+    this.getWheel = function (){
+    return this.wheel;
+    }
+    this.setWheel = function ( wheel){
+    this.wheel = wheel;
+    }
+    }
+    function Builder(){
+    this.buildHead = function (){}
+    this.buildBody = function (){}
+    this.buildWheel = function (){}
+    this.buildPart = function (){}
+    }function ConcreteBuilder (){
+    this.car = new Car();
+    this.buildHead = function (){
+    this.car.setHead( "Car head construction completed" );
+    }
+    this.buildBody = function (){
+    this.car.setBody( "Car body construction completed" );
+    }
+    this.buildWheel = function (){
+    this.car.setWheel( "Car Wheel construction completed" );
+    }
+    this.buildPart = function (){
+    return this.car;
+    }
+    }
+    var Director = {
+    construct: function ( builder){
+    builder.buildHead();
+    builder.buildBody();
+    builder.buildWheel();
+    return builder.buildPart();
+    }
+    };
+    /////////////////////test///////////////////////////////////////////////////////
+    var car = Director.construct( new ConcreteBuilder());
+    document.write( car.getHead() + "<br>" );
+    document.write( car.getBody() + "<br>" );
+    document.write( car.getWheel() + "<br>" );
+    </script>

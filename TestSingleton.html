@@ -1,0 +1,16 @@
+<script type ="text/javascript" >
+    var Singleton = {
+    instance : null ,
+    getInstance: function (){
+    if ( Singleton.instance == null ){
+    // there is only one instance
+    Singleton.instance = {};
+    }
+    return Singleton.instance
+    }
+    };
+    /////////////////////test/////////////////////////
+    var singleton1 = Singleton.getInstance();
+    var singleton2 = Singleton.getInstance();
+    document.write( singleton1 === singleton2); // true one instance
+    </script>

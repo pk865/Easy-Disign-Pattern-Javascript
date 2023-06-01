@@ -1,0 +1,51 @@
+<script type="text/javascript">
+    function Flow(){
+        this.action = function (){}
+    }
+    function ApplyFlow(){
+        Flow.call(this);
+
+        this.action = function (){
+            document.write("Apply ->");
+        }
+    }
+
+    function VerfiyFlow(){
+        Flow.call(this);
+
+        this.action = function (){
+            document.write("Verfiy ->");
+        }
+    }
+
+    function ApproveFlow(){
+        Flow.call(this);
+
+        this.action = function (){
+            document.write("Approve");
+        }
+    }
+
+    function Context(){
+        this.flow = null;
+
+        this.setFlow = function (flow){
+            this.flow = flow;
+        }
+        this.process = function (){
+            this.flow.action();
+        }
+    }
+
+    //////////////////test//////////////////
+
+    var Context = new Context();
+    context.setFlow(new ApplyFlow());
+    context.process();
+
+    context.setFlow(new VerfiyFlow());
+    context.process();
+
+    context.setFlow(new ApproveFlow());
+    context.process();
+</script>

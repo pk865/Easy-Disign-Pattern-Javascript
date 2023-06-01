@@ -1,0 +1,65 @@
+<script type="text/javascript">
+    function Observable(){
+        this.observerList = []
+
+        this.notifyObservers = function (){
+            this.observerList.forEach(function (observer){
+                observer.update();
+            });
+        }
+        this.addObserver = function (observer){
+            this.observerList.push(observer);
+        }
+    }
+    function StockData(price){
+        Observable.call(this);
+
+        this.price = price;
+
+        this.getPrice = function (){
+            return this.price;
+        }
+
+        this.setPrice = function (price){
+            this.price = price;
+            this.notifyObservers();
+        }
+    }
+
+    function Observer(observable){
+        this.observable = observable;
+        this.observable.addObserver(this);
+
+        this.update = function (observable){}
+    }
+
+    function Buyer(observable){
+        Observer.call(this , observable);
+
+        this.update = function (observable){
+            document.write("Buyer Price :" + this.observable.getPrice() + "<br>");
+        }
+    }
+
+    function Seller(observable){
+        Observer.call(this , observable);
+
+        this.update = function (observable){
+            document.write("Seller Price :" + this.observable.getPrice() + "<br>");
+        }
+    }
+
+    ////////////////////////////test///////////////////////////
+
+    var data = new StockData(16.9);
+
+    var buyer = new Buyer(data);
+    var seller = new Seller(data);
+
+    data.setPrice(18.9);
+
+    document.write("<br>------------------------------<br>")
+
+    data.setPrice(12.9);
+
+</script>

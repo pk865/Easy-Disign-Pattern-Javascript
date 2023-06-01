@@ -1,0 +1,46 @@
+<script type="text/javascript">
+    function Person(){
+        this.show = function (){}
+    }
+
+    function Man(){
+        this.show = function (){
+            document.write("I am a man <br>");
+        }
+    }
+    Man.prototype = new Person();
+
+    function Decorator(person){
+        this.person = person;
+    }
+
+    function ManagerDecorator(person){
+        Decorator.call(this , person);
+
+        this.show = function (){
+            this.person.show();
+
+            document.write("I am still a manager<br>");
+        }
+    }
+
+    function ActorDecorator(person){
+        Decorator.call(this , person);
+
+        this.show = function (){
+            this.person.show();
+            document.write("I am still an international actor.<br>");
+        }
+    }
+
+    /////////////////test//////////////////
+
+    var person = new Man();
+    person.show();
+    document.write("<br>-------------------<br>")
+    person.show();
+    document.write("<br>-------------------<br>")
+    person = new ActorDecorator(person);
+    person.show();
+
+    </script>

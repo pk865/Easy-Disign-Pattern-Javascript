@@ -1,0 +1,46 @@
+<style>
+    #product_table{
+    border:1px solid #dddddd;
+    background-color:eeeeee;
+    width:550px;
+    font-size:16px;
+    }
+    #product input{
+    width: 120px;
+    }
+    </style>
+    <table id ="product_table" >
+    <tr>
+    <td> Product </td>
+    <td> Price </td>
+    <td> Quantity </td>
+    </tr>
+    </table>
+    <script type ="text/javascript" >
+    var cartJson = null ;
+    if ( localStorage.getItem( "cart" ) == null ){
+    //for example this json data from server
+    cartJson = [
+    { "product" : "Easy Learning Javascript" , "price" : 3.99 ,
+    "quantity" : 1 },
+    { "product" : "Easy Learning Java" , "price" : 3.99 , "quantity" :
+    1 },{ "product" : "Easy Learning Python 3" , "price" : 3.99 ,
+    "quantity" : 1 }
+    ]
+    localStorage.setItem( "cart" , JSON.stringify( cartJson)); //localStorage is cache
+    } else {
+    cartJson = JSON.parse( localStorage.getItem( "cart" ));
+    }
+    /////////////////////test///////////////////////////////////////////////////////
+    var product_table = document.getElementById( "product_table" );
+    for ( var i= 0 ; i< cartJson.length; i++){
+    var item = cartJson[ i];
+    var product_tr = product_table.insertRow();
+    var product = product_tr.insertCell();
+    var price = product_tr.insertCell();
+    var quantity = product_tr.insertCell();
+    product.innerHTML = item.product;
+    price.innerHTML = item.price;
+    quantity.innerHTML = item.quantity;
+    }
+    </script>

@@ -1,0 +1,30 @@
+<div id="image">
+
+</div>
+
+<script type="text/javascript">
+    var Target = {
+        loadImage : function (loadimg, imageSrc){
+            var img = document.createElement('img');
+            img.src = imageSrc;
+            img.onload = function (){
+                //Once the image is loaded, it will be displayed immediately
+                loadimg.src = img.src;
+            }
+        }
+    }
+    function Proxy(){
+        this.call = function (target, method, imageSrc){
+            //preload image
+            var img = document.createElement('img');
+            img.src = "images/loading.gif" ;
+            document.getElementById("image").appendChild(img);
+
+            result = target[method](img, imageSrc);
+            return result;
+        }
+    }
+
+    var proxy = new Proxy();
+    proxy.call(Target, "loadImage" , "images/javascript.jpg");
+</script>

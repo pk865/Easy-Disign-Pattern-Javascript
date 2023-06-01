@@ -1,0 +1,52 @@
+<input type="radio" name="fly" value=1 onclick="doCreate(this)"/>Banshee
+<input type="radio" name="fly" value=2 onclick="doCreate(this)"/>B747fly
+<input type="radio" name="fly" value=3 onclick="doCreate(this)"/>A380fly
+<br><br>
+<span id="result"></span>
+<script type="text/javascript">
+    function Fly(){
+        this.shoot = function(){}
+    }
+    function Banshee(){
+        this.shoot = function(){
+            document.getElementById("result").innerHTML = "Banshee fire the laser";
+        }
+    }
+    Banshee.prototype = new Fly();
+
+    function B747fly(){
+        this.shoot = function(){
+            document.getElementById("result").innerHTML = "B747 fire the missile";
+        }
+    }
+    B747fly.prototype = new Fly();
+
+        function A380fly(){
+            this.shoot = function(){
+                document.getElementById("result").innerHTML = "A380 fire the trigeminal shot";
+            }
+        }
+        A380fly.prototype = new Fly();
+
+        var FlyFactory = {
+            create: function(type){
+                var fly = null;
+                if(type == 1){
+                    fly = new Banshee();
+                }else if(type == 2){
+                    fly = new B747fly();
+                }else if(type == 3){
+                    fly = new A380fly();
+                }
+                return fly
+            }
+        };
+
+        //////////////////test///////////////
+
+        function doCreate(obj){
+            fly = FlyFactory.create(obj.value);
+            fly.shoot();
+        }
+    
+</script> 

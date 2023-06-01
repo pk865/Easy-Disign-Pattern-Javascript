@@ -1,0 +1,43 @@
+<script type="text/javascript">
+    function HouseOwner(){
+        this.action = function (){
+
+        }
+    }
+
+    function HouseRent (){
+        HouseOwner.call(this);
+
+        this.action = function (){
+            document.write("Client come to rent a house <br>")
+        }
+    }
+
+    function HouseSale (){
+        HouseOwner.call(this);
+
+        this.action = function (){
+            document.write("Client come to need to sell <br>")
+        }
+    }
+
+    function Mediator (){
+        this.owner1 = new HouseRent();
+        this.owner2 = new HouseSale();
+
+        this.handle = function (content){
+            if (content == "rent"){
+                this.owner1.action();
+            }
+            if (content == "sale"){
+                this.owner2.action();
+            }
+        }
+    }
+
+    var mediator = new Mediator();
+    //mediator help adjust the renting and selling between the client and the houseowner
+
+    mediator.handle("rent")
+    mediator.handle("sale")
+</script>

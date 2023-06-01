@@ -1,0 +1,45 @@
+<script type ="text/javascript" >
+    function Addition(){
+        this.caculate = function ( a, b){
+            return a + b;
+    }
+    }
+    function Subtraction(){
+        this.caculate = function ( a, b){
+            return a - b;
+        }
+    }
+    function Multiplication(){
+        this.caculate = function ( a, b){
+            return a * b;
+        }
+    }
+    function Division(){
+        this.caculate = function ( a, b){
+            return a / b;
+        }
+    }
+    function Contex(strategy){
+        this.strategy = strategy;
+
+        this.caculate = function ( a, b){
+            return this.strategy.caculate( a, b);
+        }
+    }
+
+    var Context = new Context( new Addition());
+    var result = context.caculate( 4 , 2 );
+    document.write(result + "<br>" );
+
+    var context = new Context( new Subtraction());
+    var result = context.caculate( 4 , 2 );
+    document.write(result + "<br>" );
+
+    var context = new Context( new Multiplication());
+    var result = context.caculate( 4 , 2 );
+    document.write(result + "<br>" );
+
+    var context = new Context( new Division());
+    var result = context.caculate( 4 , 2 );
+    document.write(result + "<br>" );
+</script>

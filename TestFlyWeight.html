@@ -1,0 +1,40 @@
+<script type="text/javascript">
+    function Person(name){
+        this.name = name;
+
+        this.getName = function (){
+            return this.name;
+        }
+        this.setName = function (name){
+            this.name = name;
+        }
+    }
+    var Cache = {
+        map : {},
+
+        get: function (key){
+            return Cache.map[key];
+        },
+        put: function (key, value){
+            Cache.map[key] = value;
+        }
+    };
+
+    ///////////////test/////////////
+
+    //Basic data type are stored in the cache
+    Cache.put("1", 1000 );
+
+    //String are stored in the cache
+    Cache.put("name", "Grace" );
+
+    //Object are stored in the cache
+    Cache.put("person", new Person("Sala"));
+
+    //Get data from the cache
+    document.write("int : " + Cache.get("1") + "<br>");
+    document.write("String : " + Cache.get("name") + "<br>");
+
+    person = Cache.get("person");
+    document.write("Person Object : " + person.getName() + "<br>");
+    </script>

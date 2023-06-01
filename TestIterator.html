@@ -1,0 +1,66 @@
+<script type="text/javascript">
+    function Iterator(list){
+        this.index = 0;
+        this.list = list;
+
+        this.hasNext = function (){
+            return this.index < this.list.length;
+        }
+
+        this.next = function (){
+            var element = null;
+            if (this.index < this.list.length){
+                element = this.list[this.index];
+                this.index = this.index + 1;
+            }
+        return element;
+        }
+    }
+
+    function List(){
+        this.size = 0;
+        this.element = new Array();
+
+        this.add = function (element){
+            this.element.push(element);
+            this.size = this.size + 1;
+        }
+        this.get = function (index){
+            return this.element[index];
+        }
+        this.size = function (){
+            return this.size;
+        }
+        this.iterator = function (){
+            return new Iterator(this.element);
+        }
+    }
+                /*List*/
+        //size = 0
+        //element = new Array()
+        //add(element)
+        //get(index)
+        //size()
+        //iterator()
+
+    //////////////////////////test///////////////////////
+
+
+    var list = new List();
+    list.add("Berkeley University");
+    list.add("Market street");
+    list.add("Polo Alto");
+    list.add("Cuptino");
+
+    var iterator = list.iterator();
+    while (iterator.hasNext()){
+        obj = iterator.next();
+        document.write(obj + "->");
+    }
+            /*Iterator*/
+        //index = 0
+        //list
+        //Iterator(list)
+        //hasNext()
+        //next()
+    </script>

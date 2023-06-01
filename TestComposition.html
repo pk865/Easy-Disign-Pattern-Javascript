@@ -1,0 +1,65 @@
+<script type="text/javascript">
+    function Node(name){
+        this.name = name;
+        this.childNodes = new Array();
+
+        this.getName = function (){
+            return this.name;
+        }
+
+        this.setName = function (name){
+            this.name = name;
+        }
+        this.getChildNodes = function (){
+            return this.childNodes;
+        }
+        this.add = function (node){
+            this.childNodes.push(node);
+        }
+    }
+    function Tree(name){
+        this.name = name;
+        this.root = new Node(name);
+
+        this.getName = function (){
+            return this.name;
+        }
+        this.setName = function (name){
+            this.name = name;
+        }
+    this.getRoot = function (){
+        return this.root;
+    }
+    }
+
+    /////////////test///////////////
+    var tree = new Tree("World");
+    var root = tree.getRoot();
+    china = new Node("China");
+    root.add(china);
+
+    beijing = new Node("Bei Jing");
+    shanghai = new Node("Shang Hai");
+    china.add(beijing);
+    china.add(shanghai);
+
+america = new Node("America");
+root.add(america);
+
+sanfancisco = new Node("San Fancisco");
+newyork = new Node("New York");
+america.add(sanfacisco);
+america.add(newyork);
+
+document.write(root.getName() + "<br>");
+var childNodes = root.getChildNodes();
+for (var i= 0 ; i< childNodes.length; i++){
+    var node = childNodes[i];
+    document.write("----" + node.getName() + "<br>")
+    var childNodes2 = node.getChildNodes();
+    for (var j= 0 ; j< childNodes2.length; j++){
+        var node2 = childNodes2[j];
+        document.write("--------" + node2.getName() + "<br>")
+    }
+    }
+</script>

@@ -1,0 +1,31 @@
+<script type="text/javascript">
+
+    function Plug(){
+        this.recharge = function (){}
+    }
+    function HighVoltagePlug(){
+        Plug.call(this);
+
+        this.recharge = function (){
+            return 100;//Power is 100 Voltage
+        }
+    }
+
+    function AdapterPlus (){
+        Plug.call(this);
+
+        this.recharge = function (){
+            var highPlug = new HighVoltagePlug();
+            var highVoltage = highPlug.recharge();
+            var lowVoltage = highVoltage - 64;
+            return lowVoltage;
+        }
+    }
+    //////////////////test////////////////
+
+    var plug = new HighVoltagePlug();
+    document.write(plug.recharge() + "too much voltage <br>");
+
+    plug = new AdapterPlus();
+    document.write("Adapter into " + plug.recharge() + "voltage")
+</script>

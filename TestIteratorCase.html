@@ -1,0 +1,34 @@
+<style>
+    #book_table{
+        border: 1px solid #dddddd;
+        background-color: f7fefe;
+        width: 550px;
+        font-size: 16px;
+    }
+</style>
+
+    <table id="book_table">
+        <tr>
+            <td> title </td>
+            <td> Date </td>
+        </tr>
+        </table>
+
+<script type="text/javascript">
+    //for example this data from server
+    var bookArray = new Array(
+    {"title" : "Easy Learning Javascript" , "data" : "09/09/2019"},
+    {"title" : "Easy Learning Python 3" , "data" : "07/07/2017"},
+    {"title" : "Easy Learning Java" , "data" : "06/06/2019"}
+    )
+    
+var book_table = document.getElementById("book_table");
+bookArray.forEach(function (item) {
+    var book_tr = book_table.insertRow();
+    var title = book_tr.insertCell();
+    var date = book_tr.insertCell();
+
+    title.innerHTML = item.title;
+    date.innerHTML = item.date;
+});
+</script>

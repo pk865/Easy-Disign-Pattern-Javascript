@@ -1,0 +1,24 @@
+<script type="text/javascript">
+    function PaperTemplate(){
+        this.parentPrint = function(){
+            document.write("Print A4 Paper<br>");
+        }
+    }
+
+    function ColorTemplate(){
+
+    }
+
+    ////////////////////test////////////////
+
+    ColorTemplate.prototype = new PaperTemplate();
+
+    ColorTemplate.prototype.colorPrint = function(){
+        this.parentPrint();
+        document.write("Set the color of A4 paper red<br>");
+
+    }
+
+    var template = new ColorTemplate();
+    template.colorPrint();
+</script>

@@ -1,0 +1,33 @@
+<style>
+    #accept{
+        width: 350px; height: 150px;
+        border: 1px solid #cccccc; background-color: #fff0f3;
+        text-align: left; padding: 20px;
+    }
+    #drag1{
+        width: 300px; height: 100px;
+        text-align: left;
+    }
+</style>
+    <div id="accept" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div id="visitor" draggable="true" ondragstart="drag(event)">
+    <ul>
+        <li>Easy Learning Javascript</li>
+        <li>Easy Learning Python 3</li>
+        <li>Easy Learning Java</li>
+        <li>Easy Learning HTML CSS</li>
+    </ul>
+</div>
+<script type="text/javascript">
+    function allowDrop(event){
+        event.prevetDefault();
+    }
+    function drag(event){
+        event.dataTransfer.setData("visitor_id", event.target.id);
+    } 
+    function drop(event){
+        event.prevetDefault();
+        var visitor_id=event.dataTransfer.getData("visitor_id");
+        event.target.appendChild(document.getElementById(visitor_id));
+    }
+</script>

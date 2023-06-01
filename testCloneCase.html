@@ -1,0 +1,26 @@
+<style>
+    #contact {
+        border: 1px solid #dddddd;
+        background-color: eeeeee;
+        width: 550px;
+        font-size: 16px;
+    }
+    #contact input {
+        width: 120px;
+    }
+</style>
+
+<input type="button" value="Add Contact" onclick="doAddContact()"/>
+<div id="contact_list">
+    <div id="contact">
+        Name: <input type="text"/> Telephone: <input type="text"/> Email: <input type="text">
+        </div>
+</div>
+
+<script type="text/javascript">
+    function doAddContact (){
+        var contactObj = document.getElementById("contact");
+        newContactObj = contactObj.cloneNode(true);
+        document.getElementById("contact_list").appendChild(newContactObj);
+    }
+    </script>

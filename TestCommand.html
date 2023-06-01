@@ -1,0 +1,43 @@
+<script type="text/javascript">
+    function Mouse(){
+        this.click = function (button){
+            button.onClick();
+        }
+    }
+    /*Button*/
+//name =""
+//command = null
+//addEventListener(command)
+//onClick()
+function Button(name){
+    this.name = name;
+    this.command = null;
+
+    this.addEventLisnener = function (command){
+        this.command = command;
+    }
+
+    this.onClick = function(){
+        this.command();
+    }
+}
+    /*Mouse*/
+//click(button...)
+var okCommand = function(){
+    document.write("OK button is clicked <br>");
+}
+var cancelCommand = function(){
+    document.write("Cancel button is clicked <br>");
+}
+var okButton = new Button("OK")
+okButton.addEventLisnener(okCommand);
+var cancelButton = new Button("Cancel")
+cancelButton.addEventLisnener(cancelCommand);
+
+var mouse = new Mouse()
+mouse.click(okButton)//Mouse click OK button
+mouse.click(cancelButton)//Mouse click Cancel button
+    /*Command*/
+//okCommand()
+//cancelCommand()
+</script>

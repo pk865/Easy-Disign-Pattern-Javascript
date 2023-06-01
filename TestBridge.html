@@ -1,0 +1,84 @@
+<script type="text/javascript">
+    function Person(name){
+        this.name = name;
+        this.clothing = null;
+
+        this.getName = function (){
+            return this.name;
+        }
+        this.setName = function (name){
+            this.name = name;
+        }
+        this.getClothing = function (){
+            return this.clothing;
+        }
+        this.setClothing = function (clothing){
+            this.clothing = clothing;
+        }
+
+        this.dress = function (){
+
+        }
+    }
+
+    function Man(name){
+        Person.call(this, name);
+
+        this.dress = function (){
+            document.write(this.getName() + "wear" + this.clothing.getName() + "<br>");
+        }
+    }
+
+    function Lady(name){
+        Person.call(this, name);
+
+        this.dress = function (){
+
+            document.write(this.getName() + "wear" + this.clothing.getName() + "<br>");
+        }
+    }
+
+    function Clothing(name){
+        this.name = name;
+        this.person = null;
+
+        this.getName = function (){
+            return this.name;
+        }
+        this.setName = function (name){
+            this.name = name;
+        }
+        this.getPerson = function (){
+            return this.person;
+        }
+        this.setPerson = function (person){
+            this.person = person;
+        }
+    }
+    function Jacket(name){
+        Clothing.call(this, name);
+    }
+    function Trouser(name){
+        Clothing.call(this, name);
+    }
+
+    /////////////////test////////////////
+    var man = new Man("Man");
+    var lady = new Lady("Lady");
+
+    var jacket = new Jacket("Jacket");
+    var trouser = new Trouser("Trouser");
+
+    man.setClothing(jacket);//Man wear Jacket
+    man.dress();
+
+    man.setClothing(trouser);//Man wear Trouser
+    man.dress();
+
+    lady.setClothing(jacket);//Lady wear Jacket
+    lady.dress();
+
+    lady.setClothing(trouser);//Lady wear Trouser
+    lady.dress();
+    
+    </script>
